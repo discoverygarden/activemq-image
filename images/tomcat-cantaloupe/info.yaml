@@ -1,4 +1,0 @@
----
-fallback: http://localhost/islandora/object/%{pid}/datastream/%{dsid}/view?token=%{token}
-sitemap:
-    drupal_d8_default: 'http://drupal%{suffix}'
