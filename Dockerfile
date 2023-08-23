@@ -1,8 +1,8 @@
 # https://github.com/njmittet/alpine-activemq/blob/master/Dockerfile
-FROM alpine:3.14
+FROM alpine:3.18
 
 ENV OPENJDK_VERSION=11
-ENV ACTIVEMQ_VERSION=5.16.2
+ENV ACTIVEMQ_VERSION=5.18.2
 
 # which ports...?
 #EXPOSE 1883 5672 8161 61613 61614 61616
