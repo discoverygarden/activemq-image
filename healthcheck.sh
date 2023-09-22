@@ -1,4 +1,4 @@
 #!/bin/sh
 
-/opt/activemq/bin/activemq query --objname type=Broker,brokerName=*,service=Health | grep Good
+bin/activemq query --objname type=Broker,brokerName=*,service=Health | grep -qE '^CurrentStatus *= *Good$'
 
