@@ -31,12 +31,12 @@ RUN curl --silent --fail -OL http://archive.apache.org/dist/activemq/${ACTIVEMQ_
 
 COPY --chown=activemq:activemq activemq.xml /opt/activemq/conf/
 
-COPY healthcheck.sh /bin/
-HEALTHCHECK --interval=10s --timeout=10s --start-period=5s --retries=3 \
-  CMD [ "/bin/healthcheck.sh" ]
-
 USER activemq
 
 WORKDIR /opt/activemq
+
+COPY healthcheck.sh /bin/
+HEALTHCHECK --interval=10s --timeout=10s --start-period=5s --retries=3 \
+  CMD [ "/bin/healthcheck.sh" ]
 
 CMD ["bin/activemq", "console"]
