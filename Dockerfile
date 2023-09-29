@@ -35,4 +35,8 @@ USER activemq
 
 WORKDIR /opt/activemq
 
+COPY healthcheck.sh /bin/
+HEALTHCHECK --interval=10s --timeout=10s --start-period=5s --retries=3 \
+  CMD [ "/bin/healthcheck.sh" ]
+
 CMD ["bin/activemq", "console"]
