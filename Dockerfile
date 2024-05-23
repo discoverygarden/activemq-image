@@ -1,5 +1,5 @@
 # https://github.com/njmittet/alpine-activemq/blob/master/Dockerfile
-FROM alpine:3.19
+FROM alpine:3.20
 
 ENV OPENJDK_VERSION=11
 ENV ACTIVEMQ_VERSION=5.18.3
