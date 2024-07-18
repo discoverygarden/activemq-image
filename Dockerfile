@@ -2,7 +2,7 @@
 FROM alpine:3.20
 
 ENV OPENJDK_VERSION=11
-# renovate: datasource=github-tags depName=apache/activemq versioning=regex:^(activemq-)?(?<major>\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?(-(?<compatibility>.*))?$
+# renovate: datasource=github-tags depName=apache/activemq extractVersion=^(activemq-)?(?<version>.*)$
 ENV ACTIVEMQ_VERSION=5.18.3
 
 # which ports...?
