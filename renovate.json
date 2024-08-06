@@ -8,5 +8,5 @@
       "defaultRegistryUrlTemplate": "https://archive.apache.org/dist/activemq/",
       "format": "html"
     }
-  },
+  }
 }
