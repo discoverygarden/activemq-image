@@ -3,7 +3,7 @@ FROM alpine:3.20
 
 ENV OPENJDK_VERSION=11
 # renovate: datasource=custom.activemq depName=apache/activemq extractVersion=^(?<version>.*)/$
-ENV ACTIVEMQ_VERSION=5.18.3
+ENV ACTIVEMQ_VERSION=5.18.5
 
 # which ports...?
 #EXPOSE 1883 5672 8161 61613 61614 61616
