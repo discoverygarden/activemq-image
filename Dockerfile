@@ -37,7 +37,8 @@ ARG JMX_EXRPORTER_VERSION=1.4.0
 WORKDIR /jmx
 ADD --link --chmod=644 https://github.com/prometheus/jmx_exporter/releases/download/$JMX_EXRPORTER_VERSION/jmx_prometheus_javaagent-$JMX_EXRPORTER_VERSION.jar jmx_prometheus_javaagent.jar
 COPY --chmod=644 jmx.yml ./
-ENV ACTIVEMQ_OPTS="-javaagent:/jmx/jmx_prometheus_javaagent.jar=3001:/jmx/jmx.yml"
+ENV JMX_OPT="-javaagent:/jmx/jmx_prometheus_javaagent.jar=3001:/jmx/jmx.yml"
+ENV ACTIVEMQ_OPTS="${JMX_OPT}"
 
 USER activemq
 
