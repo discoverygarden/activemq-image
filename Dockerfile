@@ -32,6 +32,20 @@ RUN curl --silent --fail -OL http://archive.apache.org/dist/activemq/${ACTIVEMQ_
 
 COPY --chown=activemq:activemq activemq.xml /opt/activemq/conf/
 
+# renovate: datasource=github-release-attachments depName=prometheus/jmx_exporter
+ARG JMX_EXPORTER_VERSION=1.4.0
+ARG JMX_EXPORTER_DIGEST=sha256:db1492e95a7ee95cd5e0a969875c0d4f0ef6413148d750351a41cc71d775f59a
+WORKDIR /jmx
+ADD \
+  --link \
+  --chmod=644 \
+  --checksum=$JMX_EXPORTER_DIGEST \
+  https://github.com/prometheus/jmx_exporter/releases/download/$JMX_EXPORTER_VERSION/jmx_prometheus_javaagent-$JMX_EXPORTER_VERSION.jar jmx_prometheus_javaagent.jar
+COPY --chmod=644 jmx.yml ./
+
+ENV JMX_OPT="-javaagent:/jmx/jmx_prometheus_javaagent.jar=3001:/jmx/jmx.yml"
+ENV ACTIVEMQ_OPTS="${JMX_OPT}"
+
 USER activemq
 
 WORKDIR /opt/activemq
