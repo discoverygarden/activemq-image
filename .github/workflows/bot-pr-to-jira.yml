@@ -6,6 +6,9 @@ on:
 permissions:
   pull-requests: write
   repository-projects: read
+  checks: read
+  contents: read
+  actions: read
 
 jobs:
   bot-job:
