@@ -1,5 +1,5 @@
 # https://github.com/njmittet/alpine-activemq/blob/master/Dockerfile
-FROM alpine:3.20
+FROM alpine:3.22
 
 ENV OPENJDK_VERSION=11
 # renovate: datasource=custom.activemq depName=apache/activemq extractVersion=^(?<version>.*)/$
