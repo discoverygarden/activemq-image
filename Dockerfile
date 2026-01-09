@@ -43,9 +43,6 @@ ADD \
   https://github.com/prometheus/jmx_exporter/releases/download/$JMX_EXPORTER_VERSION/jmx_prometheus_javaagent-$JMX_EXPORTER_VERSION.jar jmx_prometheus_javaagent.jar
 COPY --chmod=644 jmx.yml ./
 
-ENV JMX_OPT="-javaagent:/jmx/jmx_prometheus_javaagent.jar=3001:/jmx/jmx.yml"
-ENV ACTIVEMQ_OPTS="${JMX_OPT}"
-
 USER activemq
 
 WORKDIR /opt/activemq
@@ -54,4 +51,5 @@ COPY healthcheck.sh /bin/
 HEALTHCHECK --interval=10s --timeout=10s --start-period=5s --retries=3 \
   CMD [ "/bin/healthcheck.sh" ]
 
-CMD ["bin/activemq", "console"]
+COPY entrypoint.sh /bin/
+CMD ["/bin/entrypoint.sh"]
