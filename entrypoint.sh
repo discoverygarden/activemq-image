@@ -1,4 +1,4 @@
 #!/bin/sh
 
-export ACTIVEMQ_OPTS="$ACTIVEMQ_OPTS -javaagent:/jmx/jmx_prometheus_javaagent.jar=3001:/jmx/jmx.yml"
+export ACTIVEMQ_OPTS="$ACTIVEMQ_OPTS $JMX_OPT"
 exec bin/activemq console
