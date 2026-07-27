@@ -44,7 +44,6 @@ ADD \
 COPY --chmod=644 jmx.yml ./
 
 ENV JMX_OPT="-javaagent:/jmx/jmx_prometheus_javaagent.jar=3001:/jmx/jmx.yml"
-ENV ACTIVEMQ_OPTS="${JMX_OPT}"
 
 USER activemq
 
@@ -54,4 +53,5 @@ COPY healthcheck.sh /bin/
 HEALTHCHECK --interval=10s --timeout=10s --start-period=5s --retries=3 \
   CMD [ "/bin/healthcheck.sh" ]
 
-CMD ["bin/activemq", "console"]
+COPY entrypoint.sh /bin/
+CMD ["/bin/entrypoint.sh"]
