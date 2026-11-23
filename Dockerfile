@@ -65,4 +65,6 @@ CMD ["bin/activemq", "console"]
 RUN a=$(uname -m); \
   awk -v a="$a" '/^P:/{p=substr($0,3)} /^V:/{print "DGI-PKG", a, "apk", p, substr($0,3)}' /lib/apk/db/installed; \
   find / -xdev -name '*.jar' 2>/dev/null | sed "s/^/DGI-PKG $a jar /"; \
+  j=${JAVA_HOME:-$(dirname "$(dirname "$(readlink -f "$(command -v java)")")")}; \
+  [ -f "$j/release" ] && (. "$j/release"; echo "DGI-PKG $a jdk $j ${JAVA_RUNTIME_VERSION:-$JAVA_VERSION} $(echo "${IMPLEMENTOR_VERSION:-$IMPLEMENTOR}" | tr ' ' _)"); \
   true
