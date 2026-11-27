@@ -33,8 +33,8 @@ RUN curl --silent --fail -OL http://archive.apache.org/dist/activemq/${ACTIVEMQ_
 COPY --chown=activemq:activemq activemq.xml /opt/activemq/conf/
 
 # renovate: datasource=github-release-attachments depName=prometheus/jmx_exporter
-ARG JMX_EXPORTER_VERSION=1.4.0
-ARG JMX_EXPORTER_DIGEST=sha256:db1492e95a7ee95cd5e0a969875c0d4f0ef6413148d750351a41cc71d775f59a
+ARG JMX_EXPORTER_VERSION=1.7.0
+ARG JMX_EXPORTER_DIGEST=sha256:0ad843261c567d1924a017d542e14c40f2afff523d940c25ee000742fde4b3a9
 WORKDIR /jmx
 ADD \
   --link \
